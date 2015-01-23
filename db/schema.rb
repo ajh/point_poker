@@ -11,10 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150122184037) do
+ActiveRecord::Schema.define(version: 20150123024659) do
+
+  create_table "events", force: true do |t|
+    t.integer  "game_id",                  null: false
+    t.integer  "round_id"
+    t.integer  "user_id"
+    t.string   "type",                     null: false
+    t.integer  "lock_version", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "games", force: true do |t|
     t.string   "name"
+    t.string   "token",                    null: false
+    t.integer  "events_count"
+    t.integer  "rounds_count"
+    t.integer  "users_count"
+    t.integer  "lock_version", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rounds", force: true do |t|
+    t.integer  "game_id",                  null: false
+    t.string   "description",              null: false
+    t.integer  "lock_version", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.integer  "game_id",                  null: false
+    t.string   "name",                     null: false
+    t.integer  "lock_version", default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
