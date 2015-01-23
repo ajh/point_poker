@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150123024659) do
+ActiveRecord::Schema.define(version: 20150123040059) do
 
   create_table "events", force: true do |t|
     t.integer  "game_id",                  null: false
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20150123024659) do
     t.integer  "user_id"
     t.string   "type",                     null: false
     t.integer  "lock_version", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "game_changes", force: true do |t|
+    t.integer  "game_id",      null: false
+    t.integer  "game_version", null: false
+    t.string   "kind",         null: false
+    t.integer  "user_id"
+    t.integer  "round_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

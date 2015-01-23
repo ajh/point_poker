@@ -1,0 +1,17 @@
+%p#notice
+  = notice
+
+%p
+  %strong Name:
+  = @game.name
+
+%h1 Rounds
+
+%ul
+  - @game.rounds.each do |round|
+    %li= round.description
+
+%h1 Create Round
+
+= render partial: 'rounds/form', locals: {game: @game, round: @game.rounds.build}
+

@@ -1,0 +1,2 @@
+module GameChangesHelper
+end
