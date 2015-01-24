@@ -5,11 +5,7 @@
     - round.plays.each do |play|
       = render play
 
-  %div
-    %h1 Create Play
-    = render partial: 'plays/form', locals: {round: round, play: round.plays.build}
-
-    -#- if round.plays.find_by_user_id(session[:user_id]).blank?
-
+  - if round.plays.find_by_user_id(session[:user_id]).blank?
+    %div.create_play
       %h1 Create Play
       = render partial: 'plays/form', locals: {round: round, play: round.plays.build}
