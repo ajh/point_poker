@@ -1,1 +1,4 @@
-%span= play.value
+%div.card.spades{class: "rank-#{play.value}"}
+  %span.rank
+    = play.value
+  %span.suit &spades;
