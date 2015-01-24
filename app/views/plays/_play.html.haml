@@ -1,4 +1,21 @@
-%div.card.spades{class: "rank-#{play.value}"}
-  %span.rank
-    = play.value
-  %span.suit &spades;
+:ruby
+  ten_cards_count = (play.value / 10.0).floor
+  remainder = play.value % 10
+  width = 5 + (1.5 * ten_cards_count)
+  cards_count = remainder > 0 ? ten_cards_count + 1 : ten_cards_count
+
+%div.play{id: dom_id(play), style: "width: #{width}em;"}
+
+  %div
+    %ul.hand
+      - ten_cards_count.times do
+        %li.card.spades.rank-10
+          %span.rank 10
+          %span.suit &spades;
+      -if remainder > 0
+        %li.card.spades{class: "rank-#{remainder}"}
+          %span.rank= remainder
+          %span.suit &spades;
+
+  %div= play.value
+  %div= play.user.name
