@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-
-  resources :game_changes
-
   root to: 'games#new'
+
   resources :games do
     resources :events
-    resources :rounds
+    resources :game_changes
+    resources :rounds do
+      resources :plays
+    end
     resources :users
   end
 end

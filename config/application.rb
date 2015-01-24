@@ -24,5 +24,7 @@ module PointPoker
       g.stylesheet_engine :sass
       g.template_engine :haml
     end
+
+    config.autoload_paths << 'app/services'
   end
 end

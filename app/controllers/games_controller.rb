@@ -78,7 +78,7 @@ class GamesController < ApplicationController
   private
 
   def set_game
-    @game = Game.find_by_token(params[:id])
+    @game = Game.find_by_token!(params[:id])
   end
 
   def set_user_or_redirect

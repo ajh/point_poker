@@ -11,24 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150123040059) do
-
-  create_table "events", force: true do |t|
-    t.integer  "game_id",                  null: false
-    t.integer  "round_id"
-    t.integer  "user_id"
-    t.string   "type",                     null: false
-    t.integer  "lock_version", default: 0, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20150123214922) do
 
   create_table "game_changes", force: true do |t|
     t.integer  "game_id",      null: false
     t.integer  "game_version", null: false
     t.string   "kind",         null: false
-    t.integer  "user_id"
+    t.integer  "play_id"
     t.integer  "round_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,6 +31,14 @@ ActiveRecord::Schema.define(version: 20150123040059) do
     t.integer  "rounds_count"
     t.integer  "users_count"
     t.integer  "lock_version", default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "plays", force: true do |t|
+    t.integer  "round_id",   null: false
+    t.integer  "user_id",    null: false
+    t.integer  "value",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
