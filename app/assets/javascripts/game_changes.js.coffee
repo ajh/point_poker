@@ -7,12 +7,17 @@ $(document).on 'ready', ->
       $('#round_' + game_change.round_id + ' .plays').append game_change.html
 
     handle_round_change = (game_change) ->
-      $('#rounds').append game_change.html
+      if game_change.action == 'create'
+        $('#rounds').append game_change.html
+      else if game_change.action == 'update'
+        console.log '#round_' + game_change.round_id
+        $('#round_' + game_change.round_id).replaceWith game_change.html
 
     get_changes_since = (version) ->
       request = $.get game.data('game-changes-url').replace('replace_me', version)
       request.done (data, status, xhr) ->
         $.each data.game_changes, (index, game_change) ->
+          console.log game_change
           if game_change.play
             handle_play_change game_change
           if game_change.round

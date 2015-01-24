@@ -19,6 +19,6 @@ class RoundCreator
                           .game_changes
                           .build round: round,
                                  game_version: round.game.lock_version + 1,
-                                 kind: 'blah'
+                                 action: 'create'
   end
 end
