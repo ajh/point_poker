@@ -1,10 +1,14 @@
 %span= round.description
 
-%ul
+-# Todo remove ambiguity about which play list to update
+%ul.plays
   - round.plays.each do |play|
     %li= render play
 
-- if round.plays.find_by_user_id(session[:user_id]).blank?
+%h1 Create Play
+= render partial: 'plays/form', locals: {round: round, play: round.plays.build}
+
+-#- if round.plays.find_by_user_id(session[:user_id]).blank?
 
   %h1 Create Play
   = render partial: 'plays/form', locals: {round: round, play: round.plays.build}

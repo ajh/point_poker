@@ -1,4 +1,4 @@
-= form_for [round.game, round, play] do |f|
+= form_for [round.game, round, play], remote: true do |f|
   %div.field
     = f.label :value
     = f.text_field :value

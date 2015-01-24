@@ -1,9 +1,13 @@
 class GameChangesController < ApplicationController
   before_action :set_game
+  respond_to :json
 
-  # GET /games/1/since/14.json
+  # GET /games/:game_id/since/:version.json
   def since
-
+    @game_changes = @game.game_changes
+                         .where('game_version > ?', params[:version])
+                         .order('game_version asc')
+    Rails.logger.warn @game_changes.inspect
   end
 
   private

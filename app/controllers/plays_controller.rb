@@ -2,20 +2,18 @@ class PlaysController < ApplicationController
   before_action :set_game
   before_action :set_round
 
+  respond_to :json
+
   # POST /games/:game_id/rounds/:round_id/plays
   # POST /games/:game_id/rounds/:round_id/plays.json
   def create
     @play = @round.plays.build play_params.merge(user_id: session[:user_id])
     play_creator = PlayCreator.new @play
 
-    respond_to do |format|
-      if play_creator.save
-        format.html { redirect_to @game, notice: 'play was successfully created.' }
-        format.json { render :show, status: :created, location: @play }
-      else
-        format.html { render :new }
-        format.json { render json: @play.errors, status: :unprocessable_entity }
-      end
+    if play_creator.save
+      render status: :created, location: game_round_play_url(@play.round.game, @play.round, @play)
+    else
+      render status: :unprocessable_entity
     end
   end
 
