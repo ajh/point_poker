@@ -6,7 +6,7 @@ $(document).on 'ready', ->
       $.each data.game_changes, (index, game_change) ->
         console.log game_change
         if game_change.play
-          $('.plays').append game_change.html
+          $('#round_' + game_change.round_id + ' .plays').append game_change.html
 
       $('section.game').data 'version', data.game.version
 

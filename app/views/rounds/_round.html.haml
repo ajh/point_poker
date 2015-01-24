@@ -1,7 +1,6 @@
 %div.round{id: dom_id(round)}
   %span= round.description
 
-  -# Todo remove ambiguity about which play list to update
   %div.plays.playingCards
     - round.plays.each do |play|
       = render play

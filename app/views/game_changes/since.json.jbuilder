@@ -6,6 +6,7 @@ json.game_changes @game_changes do |game_change|
 
   if game_change.play
     json.play true
+    json.round_id game_change.play.round_id
     json.html render(game_change.play)
   elsif game_change.round
     json.round true
