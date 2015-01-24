@@ -11,7 +11,7 @@ if @play.errors.empty?
   end
 
 else
-  json.errors record.errors.full_messages do |msg|
+  json.errors @play.errors.full_messages do |msg|
     json.title msg
   end
 end

@@ -1,21 +1,28 @@
 $(document).on 'ready', ->
 
-  update = ->
-    request = $.get $('section.game').data('game-changes-url').replace('replace_me', $('section.game').data('version'))
-    request.done (data, status, xhr) ->
-      $.each data.game_changes, (index, game_change) ->
-        console.log game_change
-        if game_change.play
-          $('#round_' + game_change.round_id + ' .plays').append game_change.html
+  if $('#game').length > 0
+    game = $('#game')
 
-      $('section.game').data 'version', data.game.version
+    handle_play_change = (game_change) ->
+      $('#round_' + game_change.round_id + ' .plays').append game_change.html
 
-  if $('section.game').length > 0
-    # todo
-    # * what happens if dispatcher already exists?
-    window.dispatcher = new WebSocketRails $('section.game').data('websocket-url').replace('http://', '')
+    handle_round_change = (game_change) ->
+      $('#rounds').append game_change.html
 
-    window.channel = dispatcher.subscribe $('section.game').data('channel')
+    get_changes_since = (version) ->
+      request = $.get game.data('game-changes-url').replace('replace_me', version)
+      request.done (data, status, xhr) ->
+        $.each data.game_changes, (index, game_change) ->
+          if game_change.play
+            handle_play_change game_change
+          if game_change.round
+            handle_round_change game_change
+
+        game.data 'version', data.games.version
+
+    window.dispatcher = new WebSocketRails game.data('websocket-url').replace('http://', '')
+
+    window.channel = dispatcher.subscribe game.data('channel')
     window.channel.bind 'news', (data)->
-      if $('section.game').data('version') < data.game_version
-        update()
+      if game.data('version') < data.game_version
+        get_changes_since game.data('version')

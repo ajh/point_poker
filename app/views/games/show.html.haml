@@ -1,4 +1,4 @@
-%section.game{id: "game_#{@game.token}", data: {version: @game.lock_version, websocket_url: websocket_url, channel: @game.token, game_changes_url: game_changes_since_url(@game, 'replace_me')}}
+%div#game{ data: {version: @game.lock_version, websocket_url: websocket_url, channel: @game.token, game_changes_url: game_changes_since_url(@game, 'replace_me')}}
   %p#notice
     = notice
 
@@ -6,12 +6,13 @@
     %strong Name:
     = @game.name
 
-  %h1 Rounds
+  %div#rounds
+    %h1 Rounds
 
-  %ul
     - @game.rounds.each do |round|
-      %li= render round
+      = render round
 
-  %h1 Create Round
+  %div
+    %h1 Create Round
 
-  = render partial: 'rounds/form', locals: {game: @game, round: @game.rounds.build}
+    = render partial: 'rounds/form', locals: {game: @game, round: @game.rounds.build}

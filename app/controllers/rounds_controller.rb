@@ -1,19 +1,17 @@
 class RoundsController < ApplicationController
   before_action :set_game
+  respond_to :json
 
   # POST /games/:game_id/rounds
   # POST /games/:game_id/rounds.json
   def create
     @round = @game.rounds.build round_params
+    round_creator = RoundCreator.new @round
 
-    respond_to do |format|
-      if @round.save
-        format.html { redirect_to @game, notice: "Round created: #{@round.description}" }
-        format.json { render :show, status: :created, location: @round }
-      else
-        format.html { render :new }
-        format.json { render json: @round.errors, status: :unprocessable_entity }
-      end
+    if round_creator.save
+      render status: :created, location: game_round_url(@round.game, @round)
+    else
+      render status: :unprocessable_entity
     end
   end
 

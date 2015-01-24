@@ -17,7 +17,7 @@ json.game_changes @game_changes do |game_change|
   end
 end
 
-json.game do
+json.games do
   json.token @game.token
   json.version @game.lock_version
 end
