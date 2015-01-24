@@ -2,8 +2,12 @@
 @import "bootstrap";
 @import "playing_cards";
 
-.play {
+.playingCards .play, .playingCards .choice {
   display: inline-block;
+}
+
+.playingCards .choice {
+  cursor: pointer;
 }
 
 .playingCards ul.hand {

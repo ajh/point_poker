@@ -1,6 +1,24 @@
-= form_for [round.game, round, play], remote: true do |f|
-  %div.field
-    = f.label :value
-    = f.text_field :value
-  %div.actions
-    = f.submit
+= form_for [round.game, round, play], remote: true, namespace: dom_id(round) do |f|
+  = f.hidden_field :value
+
+  %div.playingCards
+    %ul.table
+      - [1,3,5,8,13,21,100].each do |v|
+        :ruby
+          ten_cards_count = (v / 10.0).floor
+          remainder = v % 10
+          width = 5 + (1.5 * ten_cards_count)
+          cards_count = remainder > 0 ? ten_cards_count + 1 : ten_cards_count
+
+        %div.choice{style: "width: #{width}em;", data: {value: v}}
+          %div
+            %ul.hand
+              - ten_cards_count.times do
+                %li.card.spades.rank-10
+                  %span.rank 10
+                  %span.suit &spades;
+              -if remainder > 0
+                %li.card.spades{class: "rank-#{remainder}"}
+                  %span.rank= remainder
+                  %span.suit &spades;
+          %div= v
