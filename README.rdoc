@@ -1,11 +1,5 @@
 == README
 
-TODO:
-
-* a round can be created with a link and or text
-* when a round is created, it is added to a log with the user info
-* a round can be ended early
-* when a round is ended early, it is added to a log with the user info
 * change the name of round to story
 * change the name of play to ??? (maybe play is okay)
 
