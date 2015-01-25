@@ -7,13 +7,14 @@ class PlayCreator
 
   def save
     play.transaction do
-      game_change = if play.round.complete?
-                      round_game_change
-                    else
-                      play_game_change
-                    end
+      if play.round.plays.length >= game.users.length
+        play.round.complete = true
+        play.save && round_game_change.save && play.round.save or raise ActiveRecord::Rollback
 
-      play.save && game_change.save or raise ActiveRecord::Rollback
+      else
+        play.save && game_change.save or raise ActiveRecord::Rollback
+      end
+
       WebsocketRails[game.token].trigger 'news', {game_version: game.lock_version}
     end
   end

@@ -44,9 +44,10 @@ ActiveRecord::Schema.define(version: 20150123214922) do
   end
 
   create_table "rounds", force: true do |t|
-    t.integer  "game_id",                  null: false
-    t.string   "description",              null: false
-    t.integer  "lock_version", default: 0, null: false
+    t.integer  "game_id",                      null: false
+    t.string   "description",                  null: false
+    t.boolean  "complete",     default: false, null: false
+    t.integer  "lock_version", default: 0,     null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
