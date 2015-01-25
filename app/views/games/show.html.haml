@@ -1,20 +1,9 @@
 %div#game{ data: {version: @game.lock_version, websocket_url: websocket_url, channel: @game.token, game_changes_url: game_changes_since_url(@game, 'replace_me')}}
-  %p#notice
-    = notice
-
-  %h1 Game
-
-  %p
-    %strong Name:
-    = @game.name
+  %h1.text-center= @game.name
 
   %div#rounds
-    %h1 Rounds
-
     - @game.rounds.each do |round|
       = render round
 
   %div
-    %h1 Create Round
-
     = render partial: 'rounds/form', locals: {game: @game, round: @game.rounds.build}

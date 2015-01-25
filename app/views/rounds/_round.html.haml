@@ -1,5 +1,5 @@
-%div.round{id: dom_id(round)}
-  %div= round.description
+%div.round.bg-info{id: dom_id(round)}
+  %h3.text-center= round.description
 
   %div.plays.playingCards
     - round.plays.each do |play|
@@ -7,5 +7,4 @@
 
   - if round.plays.find_by_user_id(session[:user_id]).blank?
     %div.create_play
-      %h1 Create Play
       = render partial: 'plays/form', locals: {round: round, play: round.plays.build}
