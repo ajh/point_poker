@@ -1,4 +1,4 @@
-Feature: Invited to a game
+Feature: User gets invited to a game
   In order to join a game created by a team member
   As an anonymous user
   I want to join the game so I can help point stories
