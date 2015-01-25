@@ -1,10 +1,10 @@
-%div.round.bg-info{id: dom_id(round)}
+%div.round{id: dom_id(round), class: round.complete? ? 'bg-success' : 'bg-primary' }
   %h3.text-center= round.description
 
   %div.plays.playingCards
     - round.plays.each do |play|
       = render play
 
-  - if round.plays.find_by_user_id(session[:user_id]).blank?
+  - if !round.complete? && round.plays.find_by_user_id(session[:user_id]).blank?
     %div.create_play
       = render partial: 'plays/form', locals: {round: round, play: round.plays.build}

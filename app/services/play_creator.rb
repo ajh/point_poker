@@ -12,7 +12,7 @@ class PlayCreator
         play.save && round_game_change.save && play.round.save or raise ActiveRecord::Rollback
 
       else
-        play.save && game_change.save or raise ActiveRecord::Rollback
+        play.save && play_game_change.save or raise ActiveRecord::Rollback
       end
 
       WebsocketRails[game.token].trigger 'news', {game_version: game.lock_version}
