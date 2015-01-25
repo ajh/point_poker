@@ -2,15 +2,21 @@
 
 TODO:
 
-* create a game - creates a hidden url
-* creates a session by choosing a name and card style
-* when the url is shared, if they don't have a session, create one as above
 * a round can be created with a link and or text
-* players can vote
-* everyone can see other votes as they come in
-* when everyone votes, the round ends
 * when a round is created, it is added to a log with the user info
+* a round can be ended early
 * when a round is ended early, it is added to a log with the user info
+* change the name of round to story
+* change the name of play to ??? (maybe play is okay)
+
+== possible other names for play
+
+* vote
+* estimate
+* guess
+* guesstimate
+* reckoning
+* opinion
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
