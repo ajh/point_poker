@@ -2,9 +2,14 @@
   %h3.text-center= round.description
 
   %div.plays.playingCards
+    - if !round.complete? && round.plays.find_by_user_id(session[:user_id]).blank?
+      = render 'plays/potential'
+
     - round.plays.each do |play|
       = render play
 
   - if !round.complete? && round.plays.find_by_user_id(session[:user_id]).blank?
+    %hr
+    %h5 Choose your points:
     %div.create_play
       = render partial: 'plays/form', locals: {round: round, play: round.plays.build}

@@ -8,9 +8,19 @@
 
 .playingCards .choice {
   cursor: pointer;
+  opacity: 0.85;
+}
+.playingCards .choice:hover {
+  cursor: pointer;
+  opacity: 1;
 }
 
 .playingCards ul.hand {
   height: 6em;
   margin-bottom: 1em;
+}
+
+.round {
+  padding: 1em;
+  margin: 1em;
 }
