@@ -1,15 +1,22 @@
-%div.round{id: dom_id(round), class: round.complete? ? 'bg-success' : 'bg-primary' }
-  %h3.text-center= round.description
+%div.panel.panel-default.round{id: dom_id(round), class: round.complete? ? 'panel-info' : 'panel-primary' }
+  %div.panel-heading.text-center{id: dom_id(round, 'heading'), role: 'tab'}
+    %h4.panel-title
+      %a{ 'data-toggle' => 'collapse', 'href' => dom_id(round, '#collapse'), 'aria-expanded' => true, 'aria-controls' => dom_id(round, 'collapse') }
+        Story
+        = round.description
 
-  %div.plays.playingCards
-    - if !round.complete? && round.plays.find_by_user_id(session[:user_id]).blank?
-      = render 'plays/potential'
+  %div.panel-collapse.collapse.in{ id: dom_id(round, 'collapse'), 'aria-labelledby' => dom_id(round, 'heading') }
+    %div.panel-body
 
-    - round.plays.each do |play|
-      = render play
+      %div.plays.playingCards
+        - if !round.complete? && round.plays.find_by_user_id(session[:user_id]).blank?
+          = render 'plays/potential'
 
-  - if !round.complete? && round.plays.find_by_user_id(session[:user_id]).blank?
-    %hr
-    %h5 Choose your points:
-    %div.create_play
-      = render partial: 'plays/form', locals: {round: round, play: round.plays.build}
+        - round.plays.each do |play|
+          = render play
+
+      - if !round.complete? && round.plays.find_by_user_id(session[:user_id]).blank?
+        %hr
+        %h5 Choose your points:
+        %div.create_play
+          = render partial: 'plays/form', locals: {round: round, play: round.plays.build}
