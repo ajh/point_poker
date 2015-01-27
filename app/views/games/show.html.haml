@@ -3,5 +3,8 @@
 
   = render partial: 'rounds/rounds', locals: {rounds: @game.rounds}
 
-  %div
-    = render partial: 'rounds/form', locals: {game: @game, round: @game.rounds.build}
+  - if @game.rounds.any?
+    %div
+      = render partial: 'rounds/form', locals: {game: @game, round: @game.rounds.build}
+  - else
+    = render partial: 'rounds/long_form', locals: {game: @game, round: @game.rounds.build}

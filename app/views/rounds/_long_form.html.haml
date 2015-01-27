@@ -1,0 +1,21 @@
+%div.panel.panel-default
+  %div.panel-heading
+    %h3.text-center.panel-title
+      The game has started
+
+  %div.panel-body
+    %p
+      Share this url with your team members so they can join. Only people you share with will be able to join the game.
+
+    %div.well
+      = link_to game_url(@game)
+
+    %p
+      While you're waiting for your team members to join, why not start adding some rounds?
+
+  %div.panel-footer
+    = form_for [game, round], html: {class: 'form-inline'} do |f|
+      %div.form-group
+        = f.label :description, 'Round Description'
+        = f.text_field :description, class: 'form-control'
+      = f.submit class: 'btn btn-primary'

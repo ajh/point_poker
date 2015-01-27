@@ -1,18 +1,29 @@
-%h1 New game
+%div.panel.panel-default
+  %div.panel-heading
+    %h3.text-center.panel-title Create a game
 
-= form_for(@game) do |f|
-  - if @game.errors.any?
-    %div#error_explanation
-      %h2
-        = pluralize(@game.errors.count, "error")
-        prohibited this game from being saved:</h2>
+  %div.panel-body
+    Choose a name for the work to be estimated. For example:
 
-      %ul
-      - @game.errors.full_messages.each do |message|
-        %li= message
+    %ul
+      %li Add credit card processing
+      %li Build json api
+      %li Improve data warehouse performance
 
-  %div.form-group
-    = f.label :name
-    = f.text_field :name, class: 'form-control'
+  %div.panel-footer
+    = form_for(@game) do |f|
+      - if @game.errors.any?
+        %div#error_explanation
+          %h2
+            = pluralize(@game.errors.count, "error")
+            prohibited this game from being saved:</h2>
 
-  = f.submit
+          %ul
+          - @game.errors.full_messages.each do |message|
+            %li= message
+
+      %div.form-group
+        = f.label :name
+        = f.text_field :name, class: 'form-control'
+
+      = f.submit class: 'btn btn-primary'
