@@ -4,10 +4,11 @@
       %a{ 'data-toggle' => 'collapse', 'href' => dom_id(round, '#collapse'), 'aria-expanded' => true, 'aria-controls' => dom_id(round, 'collapse') }
         Story
         = round.description
+        - if round.complete?
+          %span.badge= round.mean
 
   %div.panel-collapse.collapse.in{ id: dom_id(round, 'collapse'), 'aria-labelledby' => dom_id(round, 'heading') }
     %div.panel-body
-
       %div.plays.playingCards
         - if !round.complete? && round.plays.find_by_user_id(session[:user_id]).blank?
           = render 'plays/potential'
@@ -17,6 +18,6 @@
 
       - if !round.complete? && round.plays.find_by_user_id(session[:user_id]).blank?
         %hr
-        %h5 Choose your points:
+        %h5 Choose card:
         %div.create_play
           = render partial: 'plays/form', locals: {round: round, play: round.plays.build}
