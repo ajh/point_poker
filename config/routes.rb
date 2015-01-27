@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'games#new'
+  root to: 'welcome#home'
 
   resources :games do
     resources :events

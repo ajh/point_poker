@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+%html
+%head
+  = render partial: 'layouts/head'
+%body
+  %div.jumbotron
+    %div.container-fluid
+      %h1
+        Point Poker
+        %small
+          estimating for agile teams
+      %p
+        Get started in these easy steps:
+
+        %ol
+          %li Create a game
+          %li Enter a name that your team members will see
+          %li Enter some rounds
+          %li Share the url to your team members
+
+      %div
+        %a.btn.btn-primary{ href: new_game_path, role: "button" }
+          Create a game

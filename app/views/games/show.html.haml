@@ -1,5 +1,5 @@
 %div#game{ data: {version: @game.lock_version, websocket_url: websocket_url, channel: @game.token, game_changes_url: game_changes_since_url(@game, 'replace_me')}}
-  %h1.text-center= @game.name
+  %h1.text-center.text-capitalize= @game.name
 
   = render partial: 'rounds/rounds', locals: {rounds: @game.rounds}
 
