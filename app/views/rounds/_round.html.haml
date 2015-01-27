@@ -17,7 +17,7 @@
           = render play
 
       - if !round.complete? && round.plays.find_by_user_id(session[:user_id]).blank?
-        %hr
-        %h5 Choose card:
         %div.create_play
+          %hr
+          %h5 Choose card:
           = render partial: 'plays/form', locals: {round: round, play: round.plays.build}
