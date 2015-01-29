@@ -4,7 +4,7 @@ $(document).on 'ready', ->
     game = $('#game')
 
     # create websocket dispatcher
-    window.dispatcher = new WebSocketRails game.data('websocket-url').replace('http://', '')
+    window.dispatcher = new WebSocketRails game.data('websocket-url').replace(/https?:\/\//, '')
 
     # subscribe to the games channel
     window.channel = dispatcher.subscribe game.data('channel')
