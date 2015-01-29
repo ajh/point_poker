@@ -22,7 +22,7 @@ test: &test
 
 production:
   <<: *default
-  database: point_poker
+  url: <%= ENV['DATABASE_URL'] %>
 
 cucumber:
   <<: *test
