@@ -35,6 +35,12 @@ Things you may want to cover:
 
 * ...
 
+== websocket eventual consistency design
+
+The client stores the lock_version value of the game. Websocket events just
+send new lock_version values. The client asks for json that includes all the
+new stuff since its known lock version, and iterates through that and renders
+it on the page.
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
