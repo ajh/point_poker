@@ -7,7 +7,6 @@ class GameChangesController < ApplicationController
     @game_changes = @game.game_changes
                          .where('game_version > ?', params[:version])
                          .order('game_version asc')
-    Rails.logger.warn @game_changes.inspect
   end
 
   private
