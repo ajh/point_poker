@@ -9,15 +9,15 @@ json.game_changes @game_changes do |game_change|
     json.play_id game_change.play_id
     json.play true
     json.round_id game_change.play.round_id
-    json.html render(game_change.play)
+    json.html render(partial: "plays/play.html", locals: {play: game_change.play})
   elsif game_change.round
     json.round_id game_change.round_id
     json.round true
-    json.html render(game_change.round)
+    json.html render(partial: "rounds/round.html", locals: {round: game_change.round})
   elsif game_change.user
     json.user_id game_change.user_id
     json.user true
-    json.html render(game_change.user)
+    json.html render(partial: "users/user.html", locals: {user: game_change.user})
   end
 end
 
