@@ -9,6 +9,8 @@ gem 'database_cleaner'
 gem 'haml'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
+gem 'lunchy'
+gem 'pg'
 gem 'poltergeist'
 gem 'sass-rails', '~> 4.0.3'
 gem 'sdoc', '~> 0.4.0',          group: :doc

@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150123214922) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "game_changes", force: true do |t|
     t.integer  "game_id",      null: false
     t.integer  "game_version", null: false
