@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+%html
+%head
+  = render partial: 'layouts/head'
+%body
+  %div.jumbotron
+    %div.container-fluid
+      %h1
+        High Voltage Test
+
+      %p
+        It seems to be working!
+
+      %div
+        %a.btn.btn-primary{ href: new_game_path, role: "button" }
+          Create a game

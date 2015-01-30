@@ -13,5 +13,6 @@ Rails.application.routes.draw do
 
   if Rails.env.development?
     get 'channel/:game_id', to: 'channel_tests#channel'
+    get "/pages/*id" => 'high_voltage/pages#show'
   end
 end
