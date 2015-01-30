@@ -8,12 +8,12 @@ json.game_changes @game_changes do |game_change|
   if game_change.play
     json.play_id game_change.play_id
     json.play true
-    json.round_id game_change.play.round_id
+    json.story_id game_change.play.story_id
     json.html render(partial: "plays/play.html", locals: {play: game_change.play})
-  elsif game_change.round
-    json.round_id game_change.round_id
-    json.round true
-    json.html render(partial: "rounds/round.html", locals: {round: game_change.round})
+  elsif game_change.story
+    json.story_id game_change.story_id
+    json.story true
+    json.html render(partial: "stories/story.html", locals: {story: game_change.story})
   elsif game_change.user
     json.user_id game_change.user_id
     json.user true

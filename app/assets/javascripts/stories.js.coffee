@@ -2,6 +2,6 @@
 
 $(document).on 'ready', ->
 
-  $('form#new_round').on 'ajax:success', ->
+  $('form#new_story').on 'ajax:success', ->
     console.log 'here'
     $(this)[0].reset()

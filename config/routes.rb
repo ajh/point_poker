@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :games do
     resources :events
-    resources :rounds do
+    resources :stories do
       resources :plays
     end
     resources :users

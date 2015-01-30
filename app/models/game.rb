@@ -1,7 +1,7 @@
 class Game < ActiveRecord::Base
   before_create :generate_token
   has_many :game_changes, dependent: :destroy
-  has_many :rounds, dependent: :destroy
+  has_many :stories, dependent: :destroy
   has_many :users, dependent: :destroy
 
   def to_param

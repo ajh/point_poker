@@ -10,19 +10,19 @@ Feature: observer can watch but not participate
     When I fill in the new user form as an observer and submit it
     Then I should be on that games show page
 
-  Scenario: An observer can see an incomplete round
-    Given a round exists
+  Scenario: An observer can see an incomplete story
+    Given a story exists
     And I am an observer
     When several players play cards
     Then I should see the cards face down
 
-  Scenario: An observer can see a complete round
-    Given a round exists
+  Scenario: An observer can see a complete story
+    Given a story exists
     And I am an observer
     When all players play cards
     Then I should see the cards face up
 
   Scenario: An observer can not participate
-    Given a round exists
+    Given a story exists
     And I am an observer
     Then I see no option to play cards

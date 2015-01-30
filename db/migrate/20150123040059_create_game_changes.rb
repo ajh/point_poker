@@ -5,7 +5,7 @@ class CreateGameChanges < ActiveRecord::Migration
       t.integer :game_version, null: false
       t.string :action, null: false
       t.belongs_to :play
-      t.belongs_to :round
+      t.belongs_to :story
       t.belongs_to :user
 
       t.timestamps

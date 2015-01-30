@@ -1,4 +1,4 @@
 class Play < ActiveRecord::Base
-  belongs_to :round
+  belongs_to :story
   belongs_to :user
 end

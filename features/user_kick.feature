@@ -8,10 +8,10 @@ Feature: Kick a player
     When I choose to kick out another player
     Then I should see the player was removed
 
-  Scenario: Kicked player was holding up a round
+  Scenario: Kicked player was holding up a story
     Given A game exists with two other players
-    And A round exists
-    And all players but one have voted in the round
+    And A story exists
+    And all players but one have voted in the story
     When I choose to kick out the non voting player
-    Then the round should be closed
+    Then the story should be closed
     And the played cards should be face up

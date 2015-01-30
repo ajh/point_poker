@@ -3,5 +3,5 @@ Feature: Game log
   As a player
   I want to see log messages when players do important actions
 
-  Scenario: round creation is logged
-  Scenario: round closed by player is logged
+  Scenario: story creation is logged
+  Scenario: story closed by player is logged

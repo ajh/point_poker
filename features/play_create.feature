@@ -4,22 +4,22 @@ Feature: Play cards
   I want to play cards
 
   Scenario: Play a card
-    Given A round exists
+    Given A story exists
     And I visit the game page
-    When I choose a card for the round
+    When I choose a card for the story
     Then I should see the card has been played
 
   Scenario: Remove a play
-    Given A round exists
+    Given A story exists
     And I visit the game page
-    And I have played a card for the round
+    And I have played a card for the story
     When I choose to remove my played card
     Then I should not see any card that I have played
 
   Scenario: Remove a play and play again
-    Given A round exists
+    Given A story exists
     And I visit the game page
-    And I have played a card for the round
+    And I have played a card for the story
     And I have removed my play
-    When I choose a card for the round
+    When I choose a card for the story
     Then I should see the card has been played

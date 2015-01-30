@@ -1,6 +1,6 @@
-class CreateRounds < ActiveRecord::Migration
+class CreateStories < ActiveRecord::Migration
   def change
-    create_table :rounds do |t|
+    create_table :stories do |t|
       t.integer :game_id, null: false
       t.string :description, null: false
       t.boolean :complete, null: false, default: false

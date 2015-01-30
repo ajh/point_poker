@@ -21,17 +21,17 @@ $(document).on 'ready', ->
         $.each data.game_changes, (index, game_change) ->
           if game_change.play
             handle_play_change game_change
-          if game_change.round
-            handle_round_change game_change
+          if game_change.story
+            handle_story_change game_change
 
         game.data 'version', data.games.version
 
     handle_play_change = (game_change) ->
-      $('#round_' + game_change.round_id + ' .plays').append game_change.html
+      $('#story_' + game_change.story_id + ' .plays').append game_change.html
 
-    handle_round_change = (game_change) ->
+    handle_story_change = (game_change) ->
       if game_change.action == 'create'
-        $('#rounds').append game_change.html
+        $('#stories').append game_change.html
       else if game_change.action == 'update'
-        $('#round_' + game_change.round_id).replaceWith game_change.html
+        $('#story_' + game_change.story_id).replaceWith game_change.html
 

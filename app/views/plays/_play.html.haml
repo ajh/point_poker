@@ -1,4 +1,4 @@
-- if play.round.complete? || play.user_id == session[:user_id]
+- if play.story.complete? || play.user_id == session[:user_id]
   = render partial: 'plays/face_up', locals: {play: play}
 
 - else

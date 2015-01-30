@@ -51,7 +51,7 @@ WebsocketRails.setup do |config|
 
   # Uncomment and change this option to override the class associated
   # with your `current_user` object. This class will be used when
-  # synchronization is enabled and you trigger events from background
+  # synchronization is enabled and you trigger events from backgstory
   # jobs using the WebsocketRails.users UserManager.
   # config.user_class = User
 

@@ -11,11 +11,11 @@
       = link_to game_url(@game)
 
     %p
-      While you're waiting for your team members to join, why not start adding some rounds?
+      While you're waiting for your team members to join, why not start adding some stories?
 
   %div.panel-footer
-    = form_for [game, round], html: {class: 'form-inline'} do |f|
+    = form_for [game, story], html: {class: 'form-inline'} do |f|
       %div.form-group
-        = f.label :description, 'Round Description'
+        = f.label :description, 'Story Description'
         = f.text_field :description, class: 'form-control'
       = f.submit class: 'btn btn-primary'

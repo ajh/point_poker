@@ -7,9 +7,9 @@ class PlayCreator
 
   def save
     play.transaction do
-      if play.round.plays.length >= game.users.length
-        play.round.complete = true
-        play.save && round_game_change.save && play.round.save or raise ActiveRecord::Rollback
+      if play.story.plays.length >= game.users.length
+        play.story.complete = true
+        play.save && story_game_change.save && play.story.save or raise ActiveRecord::Rollback
 
       else
         play.save && play_game_change.save or raise ActiveRecord::Rollback
@@ -27,13 +27,13 @@ class PlayCreator
                                              action: 'create'
   end
 
-  def round_game_change
-    @round_game_change ||= game.game_changes.build round: play.round,
+  def story_game_change
+    @story_game_change ||= game.game_changes.build story: play.story,
                                              game_version: game.lock_version + 1,
                                              action: 'update'
   end
 
   def game
-    play.round.game
+    play.story.game
   end
 end

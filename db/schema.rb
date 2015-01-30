@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20150123214922) do
     t.integer  "game_version", null: false
     t.string   "action",       null: false
     t.integer  "play_id"
-    t.integer  "round_id"
+    t.integer  "story_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -29,24 +29,24 @@ ActiveRecord::Schema.define(version: 20150123214922) do
 
   create_table "games", force: true do |t|
     t.string   "name"
-    t.string   "token",                    null: false
+    t.string   "token",                     null: false
     t.integer  "events_count"
-    t.integer  "rounds_count"
+    t.integer  "stories_count"
     t.integer  "users_count"
-    t.integer  "lock_version", default: 0, null: false
+    t.integer  "lock_version",  default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "plays", force: true do |t|
-    t.integer  "round_id",   null: false
+    t.integer  "story_id",   null: false
     t.integer  "user_id",    null: false
     t.integer  "value",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "rounds", force: true do |t|
+  create_table "stories", force: true do |t|
     t.integer  "game_id",                      null: false
     t.string   "description",                  null: false
     t.boolean  "complete",     default: false, null: false
