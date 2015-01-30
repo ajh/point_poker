@@ -10,13 +10,13 @@
   %div.panel-collapse.collapse.in{ id: dom_id(story, 'collapse'), 'aria-labelledby' => dom_id(story, 'heading') }
     %div.panel-body
       %div.plays.playingCards
-        - if !story.complete? && story.plays.find_by_user_id(session[:user_id]).blank?
+        - if !story.complete? && !current_user.observer? && story.plays.find_by_user_id(current_user.id).blank?
           = render 'plays/potential'
 
         - story.plays.each do |play|
           = render play
 
-    - if !story.complete? && story.plays.find_by_user_id(session[:user_id]).blank?
+    - if !story.complete? && !current_user.observer? && story.plays.find_by_user_id(current_user.id).blank?
       %div.panel-footer.create_play
         %h5 Choose card:
         = render partial: 'plays/form', locals: {story: story, play: story.plays.build}
