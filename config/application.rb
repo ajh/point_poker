@@ -23,6 +23,7 @@ module PointPoker
     config.generators do |g|
       g.stylesheet_engine :sass
       g.template_engine :haml
+      g.factory_girl dir: Rails.root.join('features', 'factories')
     end
   end
 end
