@@ -24,5 +24,7 @@ group :development, :test do
   gem 'guard-cucumber',   require: false
   gem 'pickle'
   gem 'poltergeist'
+  gem 'selenium-webdriver'
   gem 'simplecov',        require: false
+  gem 'site_prism'
 end

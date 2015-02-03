@@ -4,7 +4,7 @@
   width = 5 + (1.5 * ten_cards_count)
   cards_count = remainder > 0 ? ten_cards_count + 1 : ten_cards_count
 
-%div.play{id: dom_id(play), style: "width: #{width}em;"}
+%div.play.face-up{id: dom_id(play), style: "width: #{width}em;"}
 
   %div
     %ul.hand
