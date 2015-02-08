@@ -10,13 +10,7 @@
       - @game.users.where(observer: false).each do |user|
         %li
           = user.name
-          - unless user == current_user
-            = link_to 'kick',
-                      game_user_path(@game, user),
-                      'data-confirm' => 'are you sure?',
-                      method: :delete,
-                      remote: true,
-                      class: 'btn btn-danger'
+          = kick_link user
 
   - if observers.any?
     %h5 Observers:
@@ -25,5 +19,4 @@
       - @game.users.where(observer: true).each do |user|
         %li
           = user.name
-          - unless user == current_user
-            = link_to 'kick', game_user_path(@game, user), {method: :delete, remote: true}
+          = kick_link user
