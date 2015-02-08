@@ -1,9 +1,11 @@
 %div.panel.panel-default
   %div.panel-heading
-    %h3.text-center.panel-title What's your name?
+    %h3.text-center.panel-title
+      Join point poker game:
+      = @game.name
 
   %div.panel-body
-    Choose a name for your team members to identify you.
+    What's your name?
 
   %div.panel-footer
     = render partial: 'form', locals: { game: @game, user: @user }
