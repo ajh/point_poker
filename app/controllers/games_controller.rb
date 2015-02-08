@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   before_action :set_game, only: [:show]
   before_action :set_user_or_redirect, only: [:show]
+  layout 'games'
 
   # GET /games/1
   # GET /games/1.json

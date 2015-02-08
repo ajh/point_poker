@@ -14,8 +14,6 @@ class PlayCreator
       else
         play.save && play_game_change.save or raise ActiveRecord::Rollback
       end
-
-      WebsocketRails[game.token].trigger 'news', {game_version: game.lock_version}
     end
   end
 

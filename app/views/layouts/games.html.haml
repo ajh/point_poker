@@ -1,0 +1,14 @@
+!!!
+%html
+%head
+  = render 'head'
+
+%body
+  .container
+    .row.row-offcanvas.row-offcanvas-right
+      .col-xs-12.col-sm-9
+        = render 'offcanvas_toggle'
+        = yield
+
+      .col-xs-6.col-sm-3.sidebar-offcanvas
+        = render 'offcanvas'

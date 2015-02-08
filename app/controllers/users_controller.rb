@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = @game.users.build user_params
 
     respond_to do |format|
-      if @user.save
+      if UserCreator.new(@user).save
         session[:user_id] = @user.id
         format.html { redirect_to @game, notice: "Welcome #{@user.name}" }
         format.json { render :show, status: :created, location: @user }
@@ -18,6 +18,12 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def destroy
+    @user = @game.users.find params[:id]
+    UserDestroyer.new(@user).destroy
+    head :no_content
   end
 
   private

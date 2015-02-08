@@ -1,0 +1,29 @@
+:ruby
+  players   = @game.users.where observer: false
+  observers = @game.users.where observer: true
+
+#user_kick_list
+  - if players.any?
+    %h5 Players:
+
+    %ul
+      - @game.users.where(observer: false).each do |user|
+        %li
+          = user.name
+          - unless user == current_user
+            = link_to 'kick',
+                      game_user_path(@game, user),
+                      'data-confirm' => 'are you sure?',
+                      method: :delete,
+                      remote: true,
+                      class: 'btn btn-danger'
+
+  - if observers.any?
+    %h5 Observers:
+
+    %ul
+      - @game.users.where(observer: true).each do |user|
+        %li
+          = user.name
+          - unless user == current_user
+            = link_to 'kick', game_user_path(@game, user), {method: :delete, remote: true}
