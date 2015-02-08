@@ -4,19 +4,24 @@
 
 #user_kick_list
   - if players.any?
-    %h5 Players:
-
-    %ul
-      - @game.users.where(observer: false).each do |user|
-        %li
-          = user.name
-          = kick_link user
+    %table.table.table-hover.table-condensed
+      %thead
+        %tr
+          %td Players:
+      %tbody
+        - @game.users.where(observer: false).order(:name).each do |user|
+          %tr
+            %td= user.name
+            %td= kick_link user
 
   - if observers.any?
-    %h5 Observers:
+    %table.table.table-hover.table-condensed
+      %thead
+        %tr
+          %td Observers:
 
-    %ul
-      - @game.users.where(observer: true).each do |user|
-        %li
-          = user.name
-          = kick_link user
+      %tbody
+        - @game.users.where(observer: true).order(:name).each do |user|
+          %tr
+            %td= user.name
+            %td= kick_link user
