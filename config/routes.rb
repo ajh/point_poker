@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'welcome#home'
+  post 'quick_start', to: 'welcome#quick_start', as: 'quick_start'
 
   resources :games do
     resources :events
