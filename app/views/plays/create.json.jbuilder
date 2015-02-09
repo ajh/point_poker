@@ -1,7 +1,9 @@
 if @play.errors.empty?
   json.plays do
     json.created_at @play.created_at
-    json.html render(partial: 'plays/play.html', locals: {play: @play})
+    with_format :html do
+      json.html @play
+    end
     json.id @play.id
     json.story_id @play.story_id
     json.updated_at @play.updated_at

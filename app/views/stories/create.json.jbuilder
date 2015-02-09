@@ -3,7 +3,9 @@ if @story.errors.empty?
     json.created_at @story.created_at
     json.description @story.description
     json.game_id @story.game_id
-    json.html render(partial: "stories/story.html", locals: {story: @story})
+    with_format :html do
+      json.html render @story
+    end
     json.id @story.id
     json.updated_at @story.updated_at
     json.url game_story_url(@story.game, @story)
