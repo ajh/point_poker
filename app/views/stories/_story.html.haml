@@ -1,7 +1,7 @@
 %div.panel.panel-default.story{id: dom_id(story), class: story.complete? ? 'panel-info' : 'panel-primary' }
-  %div.panel-heading.text-center{id: dom_id(story, 'heading'), role: 'tab'}
+  %div.panel-heading{id: dom_id(story, 'heading'), role: 'tab'}
     %h4.panel-title
-      %a{ 'data-toggle' => 'collapse', 'href' => dom_id(story, '#collapse'), 'aria-expanded' => true, 'aria-controls' => dom_id(story, 'collapse') }
+      %a.panel-toggle{ 'data-toggle' => 'collapse', 'href' => dom_id(story, '#collapse'), 'aria-expanded' => true, 'aria-controls' => dom_id(story, 'collapse') }
         Story
         = story.description
         - if story.complete?
