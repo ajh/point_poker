@@ -1,3 +1,4 @@
+@future
 Feature: Close a story with a timer
   In order to wrap up voting
   As a player

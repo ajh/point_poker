@@ -1,3 +1,4 @@
+@future
 Feature: Expire an inactive game
   In order to destroy a game has been inactive for a long time
   As the system

@@ -1,3 +1,4 @@
+@future
 Feature: Destroy a game
   In order to end a game that has been finished
   As a player

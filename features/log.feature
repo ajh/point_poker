@@ -1,3 +1,4 @@
+@future
 Feature: Game log
   In order for players to be held accountable for their antics
   As a player

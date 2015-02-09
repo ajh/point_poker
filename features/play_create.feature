@@ -9,6 +9,7 @@ Feature: Play cards
     When I choose a card for the story
     Then I should see the card has been played
 
+  @future
   Scenario: Remove a play
     Given A story exists
     And I visit the game page
@@ -16,6 +17,7 @@ Feature: Play cards
     When I choose to remove my played card
     Then I should not see any card that I have played
 
+  @future
   Scenario: Remove a play and play again
     Given A story exists
     And I visit the game page
