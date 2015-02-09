@@ -7,7 +7,7 @@ class PlaysController < ApplicationController
   # POST /games/:game_id/stories/:story_id/plays
   # POST /games/:game_id/stories/:story_id/plays.json
   def create
-    @play = @story.plays.build play_params.merge(user_id: session[:user_id])
+    @play = @story.plays.build play_params.merge(user: current_user, user_name: current_user.name)
     play_creator = PlayCreator.new @play
 
     if play_creator.save
