@@ -5,7 +5,23 @@
         Story
         = story.description
         - if story.complete?
-          %span.badge= story.mean
+          - if story.coefficient_of_variation >= 1.0
+            -#too high! let's add warnings
+            %span.label.label-warning
+              = "%.1f" % story.mean
+              mean
+            %span.label.label-danger
+              = "%.1f" % story.std_dev
+              std dev
+
+          - else
+            %span.label.label-success
+              = "%.1f" % story.mean
+              mean
+
+          %span.label.label-default
+            = distance_of_time_in_words story.created_at, story.completed_at
+            duration
 
   %div.panel-collapse.collapse.in{ id: dom_id(story, 'collapse'), 'aria-labelledby' => dom_id(story, 'heading') }
     %div.panel-body

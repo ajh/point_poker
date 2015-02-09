@@ -9,6 +9,7 @@ class PlayCreator
     play.transaction do
       if play.story.plays.length >= game.users.where(observer: false).length
         play.story.complete = true
+        play.story.completed_at = Time.zone.now
         play.save && story_game_change.save && play.story.save or raise ActiveRecord::Rollback
 
       else
