@@ -11,8 +11,5 @@ $(document).on 'click', '.playingCards .choice', (event) ->
 $(document).on 'ajax:before', 'form.new_play', ->
   $(this).data 'disabled', true
 
-$(document).on 'ajax:success', 'form.new_play', ->
-  $(this).closest('div.create_play').remove()
-
 $(document).on 'ajax:error', 'form.new_play', ->
   $(this).data 'disabled', false

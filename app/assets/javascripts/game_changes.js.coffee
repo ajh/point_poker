@@ -25,9 +25,6 @@ $(document).on 'ready', ->
     handleGameChange = (game_change) ->
       switch "#{game_change.resource}.#{game_change.action}"
 
-        when "play.create"
-          $('#story_' + game_change.story_id + ' .plays').append game_change.html
-
         when "story.create"
           $('#stories').append game_change.html
 

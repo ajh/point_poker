@@ -5,15 +5,7 @@ json.game_changes @game_changes do |game_change|
   json.id game_change.id
   json.updated_at game_change.updated_at
 
-  if game_change.play
-    json.resource 'play'
-    json.play_id game_change.play_id
-    json.play true
-    json.story_id game_change.play.story_id
-    with_format :html do
-      json.html render game_change.play
-    end
-  elsif game_change.story
+  if game_change.story
     json.resource 'story'
     json.story_id game_change.story_id
     json.story true
