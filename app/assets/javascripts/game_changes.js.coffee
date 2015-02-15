@@ -33,3 +33,10 @@ $(document).on 'ready', ->
 
         when "user.destroy", "user.create"
           $('#user_kick_list').replaceWith game_change.html
+
+    # mobile wake up from sleep for example
+    document.addEventListener 'visibilitychange', ->
+      if document.hidden
+        return
+      if window.dispatcher and window.dispatcher.state != 'connected'
+        window.dispatcher.reconnect()
