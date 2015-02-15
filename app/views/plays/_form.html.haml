@@ -3,7 +3,7 @@
 
   %div.playingCards
     %ul.table
-      - [1,3,5,8,13,21,100].each do |v|
+      - Play::VALUES.each do |v|
         :ruby
           ten_cards_count = (v / 10.0).floor
           remainder = v % 10
