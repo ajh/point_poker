@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: games
+#
+#  id            :integer          not null, primary key
+#  name          :string(255)
+#  token         :string(255)      not null
+#  events_count  :integer
+#  stories_count :integer
+#  users_count   :integer
+#  lock_version  :integer          default(0), not null
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 class Game < ActiveRecord::Base
   before_create :generate_token
   has_many :game_changes, dependent: :destroy

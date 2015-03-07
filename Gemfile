@@ -3,6 +3,7 @@ ruby "2.1.2"
 
 gem 'rails', '4.1.5'
 
+gem 'annotate'
 gem 'bootstrap-sass'
 gem 'coffee-rails',     '~> 4.0.0'
 gem 'cucumber-rails',   require: false
