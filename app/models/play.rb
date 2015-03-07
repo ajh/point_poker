@@ -19,5 +19,11 @@ class Play < ActiveRecord::Base
   validates :value, presence: true
   validates :user_name, presence: true
 
-  VALUES = [1,2,3,5,8,13,21,100].freeze
+  VALUES = [0, 0.5, 1,2,3,5,8,13,21,100].freeze
+
+  # Return value with decimal part if integer
+  def value
+    v = read_attribute :value
+    v.floor == v ? v.floor : v
+  end
 end

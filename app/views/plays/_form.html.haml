@@ -10,16 +10,16 @@
           ten_cards_count = (v / 10.0).floor
           remainder = v % 10
           width = 5 + (1.5 * ten_cards_count)
-          cards_count = remainder > 0 ? ten_cards_count + 1 : ten_cards_count
 
         %div.choice{style: "width: #{width}em;", data: {value: v}}
           %div
+            -# TODO: refactor this with the code in _face_up
             %ul.hand
               - ten_cards_count.times do
                 %li.card.spades.rank-10
                   %span.rank 10
                   %span.suit &spades;
-              -if remainder > 0
+              - if remainder > 0 || ten_cards_count == 0
                 %li.card.spades{class: "rank-#{remainder}"}
                   %span.rank= remainder
                   %span.suit &spades;
