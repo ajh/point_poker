@@ -19,6 +19,9 @@ class Game < ActiveRecord::Base
   has_many :stories, dependent: :destroy
   has_many :users, dependent: :destroy
 
+  validates :name, presence: true
+  validates :token, presence: true
+
   def to_param
     token
   end

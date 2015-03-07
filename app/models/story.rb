@@ -16,6 +16,9 @@ class Story < ActiveRecord::Base
   belongs_to :game, touch: true
   has_many :plays, dependent: :destroy
 
+  validates :game, presence: true
+  validates :description, presence: true
+
   # Return string representing average mean of all plays
   def mean
     plays.any? or return 'undefined'

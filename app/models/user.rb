@@ -13,4 +13,7 @@
 
 class User < ActiveRecord::Base
   belongs_to :game, touch: true
+
+  validates :game, presence: true
+  validates :name, presence: true
 end

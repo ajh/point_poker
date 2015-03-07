@@ -15,5 +15,9 @@ class Play < ActiveRecord::Base
   belongs_to :story
   belongs_to :user
 
+  validates :story, presence: true
+  validates :value, presence: true
+  validates :user_name, presence: true
+
   VALUES = [1,2,3,5,8,13,21,100].freeze
 end

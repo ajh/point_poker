@@ -19,6 +19,10 @@ class GameChange < ActiveRecord::Base
   belongs_to :user
   belongs_to :play
 
+  validates :game, presence: true
+  validates :game_version, presence: true
+  validates :action, presence: true
+
   after_commit :start_spreading_the_news
 
   def start_spreading_the_news
