@@ -1,19 +1,16 @@
 class WelcomeController < ApplicationController
   layout false
-  def home; end
+  def home
+    @form = QuickStartCreator.new
+  end
 
   # POST /games/create_fast
   def quick_start
-    @game = Game.new game_params
-    @user = @game.users.build user_params
+    @form = QuickStartCreator.new game_params, user_params
 
-    success = Game.transaction do
-      @game.save && @user.save or raise ActiveRecord::Rollback
-      session[:user_id] = @user.id
-    end
-
-    if success
-      redirect_to @game
+    if @form.save
+      session[:user_id] = @form.user.id
+      redirect_to @form.game
     else
       render :home
     end

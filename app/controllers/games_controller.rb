@@ -6,6 +6,7 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
+    @new_story = @game.stories.build
   end
 
   # GET /games/new

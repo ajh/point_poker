@@ -8,13 +8,15 @@
       Share this url with your team members so they can join. Only people you share with will be able to join the game.
 
     %div.well
-      = link_to game_url(@game)
+      = link_to game_url(game)
 
     %p
       While you're waiting for your team members to join, why not start adding some stories?
 
   %div.panel-footer
     = form_for [game, story], html: {class: 'form-inline'} do |f|
+      - error_messages_for story
+
       %div.form-group
         = f.label :description, 'Story Description'
         = f.text_field :description, class: 'form-control'

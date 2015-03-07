@@ -1,4 +1,6 @@
 = form_for [game, story], remote: true, html: {class: 'form-inline'} do |f|
+  - error_messages_for story
+
   %div.form-group
     = f.label :description
     = f.text_field :description, class: 'form-control'

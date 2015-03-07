@@ -1,4 +1,6 @@
 = form_for [story.game, story, play], remote: true, namespace: dom_id(story) do |f|
+  - error_messages_for play
+
   = f.hidden_field :value
 
   %div.playingCards

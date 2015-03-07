@@ -5,6 +5,6 @@
 
   - if @game.stories.any?
     %div
-      = render partial: 'stories/form', locals: {game: @game, story: @game.stories.build}
+      = render partial: 'stories/form', locals: {game: @game, story: @new_story}
   - else
-    = render partial: 'stories/long_form', locals: {game: @game, story: @game.stories.build}
+    = render partial: 'stories/long_form', locals: {game: @game, story: @new_story}

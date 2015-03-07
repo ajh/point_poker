@@ -38,3 +38,10 @@
     content: "\e080";
   }
 }
+
+.field_with_errors {
+  @extend .has-error;
+  display: inherit;
+  padding: inherit;
+  background-color: inherit;
+}

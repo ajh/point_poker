@@ -21,7 +21,7 @@ class StoriesController < ApplicationController
           render status: :unprocessable_entity
         end
         format.html do
-          raise NotImplementedError
+          redirect_to game_path(@game)
         end
       end
     end

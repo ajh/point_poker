@@ -14,11 +14,11 @@
 #
 
 class Game < ActiveRecord::Base
-  before_create :generate_token
   has_many :game_changes, dependent: :destroy
   has_many :stories, dependent: :destroy
   has_many :users, dependent: :destroy
 
+  before_validation :generate_token, on: :create
   validates :name, presence: true
   validates :token, presence: true
 
