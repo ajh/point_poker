@@ -10,10 +10,14 @@
 #  updated_at   :datetime
 #  observer     :boolean          default(FALSE), not null
 #
+# Indexes
+#
+#  index_users_on_game_id_and_name  (game_id,name) UNIQUE
+#
 
 class User < ActiveRecord::Base
   belongs_to :game, touch: true
 
   validates :game, presence: true
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: { scope: :game_id }
 end

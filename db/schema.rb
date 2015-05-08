@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307183424) do
+ActiveRecord::Schema.define(version: 20150508200708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20150307183424) do
     t.datetime "updated_at"
   end
 
+  add_index "games", ["token"], name: "index_games_on_token", unique: true, using: :btree
+
   create_table "plays", force: true do |t|
     t.integer  "story_id",                           null: false
     t.integer  "user_id",                            null: false
@@ -46,6 +48,9 @@ ActiveRecord::Schema.define(version: 20150307183424) do
     t.datetime "updated_at"
     t.string   "user_name",                          null: false
   end
+
+  add_index "plays", ["story_id"], name: "index_plays_on_story_id", using: :btree
+  add_index "plays", ["user_id", "story_id"], name: "index_plays_on_user_id_and_story_id", unique: true, using: :btree
 
   create_table "stories", force: true do |t|
     t.integer  "game_id",                      null: false
@@ -57,6 +62,8 @@ ActiveRecord::Schema.define(version: 20150307183424) do
     t.datetime "completed_at"
   end
 
+  add_index "stories", ["game_id", "description"], name: "index_stories_on_game_id_and_description", unique: true, using: :btree
+
   create_table "users", force: true do |t|
     t.integer  "game_id",                      null: false
     t.string   "name",                         null: false
@@ -65,5 +72,7 @@ ActiveRecord::Schema.define(version: 20150307183424) do
     t.datetime "updated_at"
     t.boolean  "observer",     default: false, null: false
   end
+
+  add_index "users", ["game_id", "name"], name: "index_users_on_game_id_and_name", unique: true, using: :btree
 
 end

@@ -11,13 +11,17 @@
 #  updated_at   :datetime
 #  completed_at :datetime
 #
+# Indexes
+#
+#  index_stories_on_game_id_and_description  (game_id,description) UNIQUE
+#
 
 class Story < ActiveRecord::Base
   belongs_to :game, touch: true
   has_many :plays, dependent: :destroy
 
   validates :game, presence: true
-  validates :description, presence: true
+  validates :description, presence: true, uniqueness: { scope: :game_id }
 
   # Return string representing average mean of all plays
   def mean

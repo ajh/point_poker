@@ -10,6 +10,11 @@
 #  updated_at :datetime
 #  user_name  :string(255)      not null
 #
+# Indexes
+#
+#  index_plays_on_story_id              (story_id)
+#  index_plays_on_user_id_and_story_id  (user_id,story_id) UNIQUE
+#
 
 class Play < ActiveRecord::Base
   belongs_to :story
@@ -18,6 +23,7 @@ class Play < ActiveRecord::Base
   validates :story, presence: true
   validates :value, presence: true
   validates :user_name, presence: true
+  validates :user, uniqueness: { scope: :story_id }
 
   VALUES = [0, 0.5, 1,2,3,5,8,13,21,100].freeze
 

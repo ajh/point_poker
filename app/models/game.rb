@@ -12,6 +12,10 @@
 #  created_at    :datetime
 #  updated_at    :datetime
 #
+# Indexes
+#
+#  index_games_on_token  (token) UNIQUE
+#
 
 class Game < ActiveRecord::Base
   has_many :game_changes, dependent: :destroy
